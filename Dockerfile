@@ -35,3 +35,12 @@ COPY --from=builder /app/out .
 EXPOSE 80
 # Set EntryPoint to run the application
 ENTRYPOINT ["dotnet", "CatchUpPlatform.API.dll"]
+# Note: The application will run with the 'Production' ASP.NET active environment.
+# This Dockerfile is designed to be used in a CI/CD pipeline or for local development.
+# It is necessary to define the following environment variables in the hosting provider for the application to
+# run correctly in the Production environment:
+# - DATABASE_SCHEMA: The name of the database to connect to.
+# - DATABASE_USER: The username for the database connection.
+# - DATABASE_PASSWORD: The password for the database connection.
+# - DATABASE_PORT: The port for the database connection.
+# - DATABASE_URL: The URL of the database to connect to.
